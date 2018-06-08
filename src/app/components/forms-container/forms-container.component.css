@@ -1,0 +1,16 @@
+:host {
+    width: 100%;
+}
+
+img {
+    max-width: 100%; /* This rule is very important, please do not ignore this! */
+    max-height: 150px;
+  }
+  
+  #canvas {
+    height: 600px;
+    width: 600px;
+    background-color: #ffffff;
+    cursor: default;
+    border: 1px solid black;
+  }

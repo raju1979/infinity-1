@@ -1,0 +1,78 @@
+<div id="formContainer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Edit</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <form #f='ngForm' (ngSubmit)="submit(f)">
+  
+            <div class="form-group">
+              <input type="text" class="form-control" id="name" [(ngModel)]="name" placeholder="Name" #userName='ngModel' name='name' ngModel
+                required>
+              <div class="form-control-feedback" *ngIf="userName.errors && (userName.dirty || userName.touched)">
+                <p class="alert alert-danger" *ngIf="userName.errors.required">Name is required</p>
+              </div>
+            </div>
+  
+            <div class="form-group">
+              <input type="email" class="form-control" placeholder="Email" required [(ngModel)]="email" pattern="^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$"
+                name="email" #userEmail="ngModel" appEmailDuplicateValidator>
+              <div class="form-control-feedback" *ngIf="userEmail.errors && (userEmail.dirty || userEmail.touched)">
+                <p class="alert alert-danger" *ngIf="userEmail.errors.required">Email is required</p>
+                <p class="alert alert-danger" *ngIf="userEmail.errors.pattern">Email not valid</p>
+                <p class="alert alert-danger" *ngIf="userEmail.errors.appEmailDuplicateValidator">Email exists</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="text" ageValidator class="form-control" id="age" placeholder="Age" [(ngModel)]='age' #userAge='ngModel'
+                name='age' required >
+                <div class="form-control-feedback" *ngIf="userAge.errors && (userAge.dirty || userAge.touched)">
+                    <p class="alert alert-danger" *ngIf="userAge.errors.required">Age is required</p>
+                    <p class="alert alert-danger" *ngIf="userAge.errors.ageValidator">Only between 18-45 is allowed</p>
+                  </div>
+            </div>
+  
+            <div class="form-group">
+              <input type="text" [textMask]="{mask: mask}" class="form-control" id="mac" placeholder="Mac Address MM.MM.MM.SS.SS.SS" #userMac='ngModel'
+                name='mac' [(ngModel)]="myMac" required length="17" pattern="^[0-9a-fA-F]{1,2}([\.:-])(?:[0-9a-fA-F]{1,2}\1){4}[0-9a-fA-F]{1,2}$">
+              <div class="form-control-feedback" *ngIf="userMac.errors && (userMac.dirty || userMac.touched)">
+                <p class="alert alert-danger" *ngIf="userMac.errors.required">Mac Address is required</p>
+                <p class="alert alert-danger" *ngIf="userMac.errors.pattern">Mac Address not valid</p>
+              </div>
+            </div>
+  
+            <div class="form-group">
+              <input type='file' class="form-control-file" accept="image/x-png,image/gif,image/jpeg" (change)="onSelectFile($event)">
+            </div>
+  
+            <div class="form-group">
+              <input type="hidden" class="form-control" id="userimg" #userimg name='userimg' [(ngModel)]='hiddenValue' required>
+            </div>
+
+            <div class="form-group">
+                <input type="hidden" class="form-control" id="uuid" #useruuid name='useruid' [(ngModel)]='uuid' required>
+              </div>
+  
+  
+            <div class="form-group">
+              <button type="submit" class="btn btn-success" [disabled]='!f.valid'>Save</button>
+            </div>
+  
+          </form>
+          <img [src]="hiddenValue" alt="">
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <div>
+  </div>
+  <div>
+    <div>
+      <img id="image" [src]="rawImgSrc" *ngIf='rawImgSrc'>
+    </div>
+  </div>
+  

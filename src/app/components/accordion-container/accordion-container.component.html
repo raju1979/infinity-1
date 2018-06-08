@@ -1,0 +1,27 @@
+<div>
+  <!-- <div>{{users | json}}</div> -->
+  <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+    <ngb-panel *ngFor='let user of users?.users'>
+      <ng-template ngbPanelTitle>
+        <span>{{user.name}} Details</span>
+      </ng-template>
+      <ng-template ngbPanelContent>
+        <div class="row">
+          <div class="col-md-4">
+            <img class="cardImg" [src]="user.userimg" alt="">
+          </div>
+          <div class="col-md-8">
+            <p class="mb-1 text-primary">{{user.name}}</p>
+            <p class="mb-1 text-primary">{{user.email}}</p>
+            <p class="mb-1 text-primary">{{user.age}}</p>
+            <p class="mb-1 text-primary">{{user.mac}}</p>
+          </div>
+          <div class="col-md-12 mt-3">
+            <button class="btn btn-success mr-3 border-0" (click) ='edit(user.useruid)'>Edit</button>
+            <button class="btn btn-danger border-0"  (click)='delete(user.useruid)'>Delete</button>
+          </div>
+        </div>
+      </ng-template>
+    </ngb-panel>
+  </ngb-accordion>
+</div>

@@ -1,0 +1,9 @@
+
+body {
+    background: red;
+    display: none;
+}
+
+#outerComponent {
+    width: 100%;
+}
